@@ -76,7 +76,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     posts = db.relationship("BlogPost", back_populates="author")
     comments = db.relationship("Comment", back_populates="comment_author")
-    email = db.Column(db.String(64), unique=True)
+    email = db.Column(db.String(300), unique=True)
     name = db.Column(db.String(64))
     password = db.Column(db.String(64))
 
