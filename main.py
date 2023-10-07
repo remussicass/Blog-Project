@@ -1,5 +1,5 @@
 from datetime import date
-from flask import Flask, abort, render_template, redirect, url_for, flash
+from flask import Flask, abort, render_template, redirect, url_for, flash, request
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from flask_gravatar import Gravatar
@@ -112,7 +112,7 @@ def register():
 @app.route('/login', methods=["POST", "GET"])
 def login():
     form = LoginForm()
-    if form.validate_on_submit():
+    if request.method == "POST" and form.validate_on_submit():
         email = form.email.data
         password = form.password.data
         user = db.session.execute(db.select(User).where(User.email == email)).scalar()
