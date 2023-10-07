@@ -77,8 +77,8 @@ class User(db.Model, UserMixin):
     posts = db.relationship("BlogPost", back_populates="author")
     comments = db.relationship("Comment", back_populates="comment_author")
     email = db.Column(db.String(300), unique=True)
-    name = db.Column(db.String(64))
-    password = db.Column(db.String(64))
+    name = db.Column(db.String(300))
+    password = db.Column(db.String(1000))
 
 
 with app.app_context():
